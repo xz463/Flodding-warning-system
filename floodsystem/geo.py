@@ -36,6 +36,10 @@ def rivers_with_station(stations):
 def stations_by_river(stations):
     """find all the stations monitoring the given rivers"""
 
+    river_names = []
+    for items in stations:
+        river_names.append(items.river)
+
     # import the data of all the stations
     data = build_station_list()
 
@@ -43,21 +47,16 @@ def stations_by_river(stations):
 
     # pair a station to the corresponding river
     for station in data:
-        if station.river in stations:
+        if station.river in river_names:
             try:
                 river_stations[station.river].append(str(station.name))
             except KeyError:
                 river_stations[station.river] = [str(station.name)]
                 
 
-    # for key, value in river_stations.items():
-        #river_stations[key] = value.sort()
-
     # sort the value which is a list, did not work
     for key in river_stations:
-        # s = river_station[key].sort()
         river_stations[key].sort()
-        # print(river_station[key])   
 
         
     return river_stations
