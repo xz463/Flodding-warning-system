@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+from unittest import result
 from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 from floodsystem.stationdata import build_station_list
@@ -17,19 +18,11 @@ def run():
 
     # testing function stations_by_river
     list = ['River Aire', 'River Cam', 'River Thames']
-    for item in stations_by_river(list):
-        print(stations_by_river(list)[item])
 
-    """
-    river_station = stations_by_river(list)
-    
-    
-    for key in river_station:
-        # s = river_station[key].sort()
-        river_station[key].sort()
-        print(river_station[key])
-    """
-
+    r = stations_by_river(stations)
+    for key,value in r.items():
+        if key in list:
+            print (value)
 
 if __name__ == "__main__":
     run()
