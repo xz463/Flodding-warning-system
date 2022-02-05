@@ -121,15 +121,6 @@ def stations_by_distance(stations, p):
 def stations_within_radius(stations, centre, r):
     """List all stations within a given radius r from a given centre"""
 
-    result = []
-
-    for station in stations:
-        #distance between the station and the given centre
-        distance = haversine(station.coord, centre)
-
-        #List stations within the radius
-        if distance < r:
-            result.append(station.name)
-        else:
-            continue
+    result = [station for station in stations if haversine(station.coord, centre) <= r]
+        
     return result
