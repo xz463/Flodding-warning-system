@@ -9,7 +9,7 @@ geographical data.
 from typing import Counter
 from floodsystem.stationdata import build_station_list
 from haversine import haversine, Unit
-from utils import sorted_by_key
+from floodsystem.utils import sorted_by_key
 
 
 def rivers_with_station(stations):
